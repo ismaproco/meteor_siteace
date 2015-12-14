@@ -43,24 +43,47 @@ Template.website_form.events({
         $("#website_form").toggle('slow');
     }, 
     "submit .js-save-website-form":function(event){
-
+        var isValid = true;
         // here is an example of how to get the url out of the form:
         var _url = event.target.url.value;
         var _title = event.target.title.value;
         var _description = event.target.description.value;
         
-        console.log("The url they entered is: "+url);
+        console.log("The url they entered is: "+_url);
         
-        //  put your website saving code in here!   
-        Websites.insert({
-            title:title, 
-            url:url, 
-            description:description, 
-            createdOn:new Date()
-        });
+        if(_url.length === 0){
+            isValid = false;
+            $(event.target.url.parentElement).addClass('has-error');
+        } else {
+            $(event.target.url.parentElement).removeClass('has-error');
+            isValid = true;
+        }
         
-        //toggle the visibility of the form
-        $("#website_form").toggle('slow');
+        
+        if(_title.length === 0) {
+            isValid = false;
+            $(event.target.title.parentElement).addClass('has-error');
+        } else {
+            $(event.target.title.parentElement).removeClass('has-error');
+            isValid = true;
+        }
+        
+        // validate input before saving the form
+        if(isValid) {
+            //  put your website saving code in here!   
+            Websites.insert({
+                title:_title, 
+                url:_url, 
+                description:_description, 
+                createdOn:new Date()
+            });
+            
+            //toggle the visibility of the form
+            $("#website_form").toggle('slow');    
+        }
+        
+        
+        
         
         return false;// stop the form submit from reloading the page
 
