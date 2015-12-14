@@ -67,7 +67,8 @@ Template.website_form.events({
         }
         
         if(!Meteor.user()){
-           isValid = true; 
+            alert('You are not logged in!');
+            isValid = false; 
         }
         
         // validate input before saving the form
