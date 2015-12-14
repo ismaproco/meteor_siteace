@@ -53,19 +53,21 @@ Template.website_form.events({
         
         if(_url.length === 0){
             isValid = false;
-            $(event.target.url.parentElement).addClass('has-error');
+            $(event.target.url.parentElement).addClass('has-error has-feedback');
         } else {
-            $(event.target.url.parentElement).removeClass('has-error');
-            isValid = true;
+            $(event.target.url.parentElement).removeClass('has-error has-feedback');
         }
         
         
-        if(_title.length === 0) {
+        if(_description.length === 0) {
             isValid = false;
-            $(event.target.title.parentElement).addClass('has-error');
+            $(event.target.description.parentElement).addClass('has-error has-feedback');
         } else {
-            $(event.target.title.parentElement).removeClass('has-error');
-            isValid = true;
+            $(event.target.description.parentElement).removeClass('has-error has-feedback');
+        }
+        
+        if(!Meteor.user()){
+           isValid = true; 
         }
         
         // validate input before saving the form
