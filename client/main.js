@@ -81,8 +81,10 @@ Template.website_form.events({
                 createdOn:new Date()
             });
             
+            //clear form
+            $('#website_form').trigger("reset");
             //toggle the visibility of the form
-            $("#website_form").toggle('slow');    
+            $("#website_form").toggle('slow');
         }
         
         
