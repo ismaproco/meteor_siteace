@@ -24,8 +24,7 @@ Template.website_item.events({
         // put the code in here to add a vote to a website!
         
         var calc_votes = 0;
-        var website = Websites.find({_id:website_id});
-        calcVotes = website.votes + 1;
+        calcVotes = this.votes + 1;
         Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
         
         return false;// prevent the button from reloading the page
@@ -39,8 +38,7 @@ Template.website_item.events({
 
         // put the code in here to remove a vote from a website!
         var calc_votes = 0;
-        var website = Websites.find({_id:website_id});
-        calc_votes = website.votes - 1;
+        calc_votes = this.votes - 1;
         Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
         
         
