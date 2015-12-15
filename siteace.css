@@ -11,26 +11,26 @@
 }
 
 
-.website_detail span {
+.detail span {
     
 }
 
 
-.website_detail .title {
+.detail .title {
     display:block;
     font-weight: bold;
 }
 
-.website_detail .url {
+.detail .url {
     display:block;
     font-weight: bold;
 }
 
-.website_detail .description {
+.detail .description {
     display: block;
 } 
 
-.website_detail .votes, 
-.website_detail .createdOn {
+.detail .votes, 
+.detail .createdOn {
     color: gray;
 }
