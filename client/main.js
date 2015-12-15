@@ -6,7 +6,7 @@
 // helper function that returns all available websites
 Template.website_list.helpers({
     websites:function(){
-        return Websites.find({});
+        return Websites.find( { } , { sort: { votes: -1 } } );
     }
 });
 
@@ -22,7 +22,12 @@ Template.website_item.events({
         var website_id = this._id;
         console.log("Up voting website with id "+website_id);
         // put the code in here to add a vote to a website!
-
+        
+        var calc_votes = 0;
+        var website = Websites.find({_id:website_id});
+        calcVotes = website.votes + 1;
+        Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
+        
         return false;// prevent the button from reloading the page
     }, 
     "click .js-downvote":function(event){
@@ -33,7 +38,12 @@ Template.website_item.events({
         console.log("Down voting website with id "+website_id);
 
         // put the code in here to remove a vote from a website!
-
+        var calc_votes = 0;
+        var website = Websites.find({_id:website_id});
+        calc_votes = website.votes - 1;
+        Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
+        
+        
         return false;// prevent the button from reloading the page
     }
 })
@@ -45,7 +55,7 @@ Template.website_form.events({
     "submit .js-save-website-form":function(event){
         var isValid = true;
         // here is an example of how to get the url out of the form:
-        var _url = event.target.url.value;
+        var _url = event.target.url.value;  
         var _title = event.target.title.value;
         var _description = event.target.description.value;
         
