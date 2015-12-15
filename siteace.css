@@ -7,5 +7,6 @@
 .votes,.created-on {
     font-size:small;
     color:gray;
-    display:inline-block;
+    display:block;
+    
 }
