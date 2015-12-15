@@ -24,7 +24,12 @@ Template.website_item.events({
         // put the code in here to add a vote to a website!
         
         var calc_votes = 0;
-        calc_votes = this.votes + 1;
+        if(this.votes && !isNaN(this.votes)){
+            calc_votes = this.votes + 1;    
+        } else {
+            calc_votes = 1;
+        }
+        
         Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
         
         return false;// prevent the button from reloading the page
@@ -38,7 +43,11 @@ Template.website_item.events({
 
         // put the code in here to remove a vote from a website!
         var calc_votes = 0;
-        calc_votes = this.votes - 1;
+        if(this.votes && !isNaN(this.votes)){
+            calc_votes = this.votes - 1;    
+        } else {
+            calc_votes = -1;
+        }
         Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
         
         
@@ -86,6 +95,7 @@ Template.website_form.events({
                 title:_title, 
                 url:_url, 
                 description:_description, 
+                votes:0,
                 createdOn:new Date()
             });
             
@@ -94,9 +104,6 @@ Template.website_form.events({
             //toggle the visibility of the form
             $("#website_form").toggle('slow');
         }
-        
-        
-        
         
         return false;// stop the form submit from reloading the page
 
