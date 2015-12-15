@@ -1,27 +1,37 @@
 <head>
   <title>siteace</title>
 </head>
-
 <body>
-	<!-- navbar  - you will be putting the login functions here -->
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">
-	        Site Ace
-	      </a>
-	    </div>
-	    <div class="navbar-text">
-		  	{{> loginButtons}}
-		</div>
-	  </div>
-	</nav>
 
-	<div class="container">
-		{{> website_form}}
-		{{> website_list}}
-	</div>
 </body>
+
+<template name="application">
+    {{> yield "navbar"}}
+    <div class="container">
+        {{> yield "main"}}
+    </div>
+</template>
+
+<template name="summary">
+    {{> website_form}}
+	{{> website_list}}
+</template>
+
+<template name="navbar">
+    <!-- navbar  - you will be putting the login functions here -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            Site Ace
+          </a>
+        </div>
+        <div class="navbar-text">
+    	  	{{> loginButtons}}
+    	</div>
+      </div>
+    </nav>
+</template>
 
 
 <template name="website_form">
