@@ -6,7 +6,7 @@
 // helper function that returns all available websites
 Template.website_list.helpers({
     websites:function(){
-        return Websites.find( { } , { sort: { votes: 1 } } );
+        return Websites.find( { } , { sort: { votes: -1 } } );
     }
 });
 
@@ -24,7 +24,7 @@ Template.website_item.events({
         // put the code in here to add a vote to a website!
         
         var calc_votes = 0;
-        calcVotes = this.votes + 1;
+        calc_votes = this.votes + 1;
         Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
         
         return false;// prevent the button from reloading the page
