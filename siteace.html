@@ -61,28 +61,44 @@
 
 <template name="website_detail">
 	<div class="detail">
+        <a href="/" class="btn btn-default">Back</a>
 	    <div>
 	        <h1>Webpage Details</h1>
+
 	        <p>
 	            <span class="title">{{title}}</span>
-	            <span class="url"><a href="{{url}}" target="blank">{{url}}</a></span>
-	            Description
+                <span class="url"><a href="{{url}}" target="blank">{{url}}</a></span>
+            </p>
+            <p>
+                Votes: <span class="detail-votes">{{votes}}</span>
+                Created On: <span class="detail-createdon">{{createdOn}}</span>
+            </p>
+            <p>
+                <b>Description</b>
 	            <span class="description">{{description}}</span>
-	            
-	            Votes: <span class="votes">{{votes}}</span>
-	            Created On: <span class="createdOn">{{createdOn}}</span>
-	            
-	            <a href="/">Back</a>
 	        </p>
 	    </div>
+        <ul>
+            {{#each comments}}
+                {{> website_comment}}
+            {{/each}}
+        </ul>
 	    <form class="js-comments-website">
 	        <div class="form-group">
     		    <label for="description">Comments</label>
-    		    <input type="text" class="form-control" id="comments" placeholder="I found this site really useful for ...">
-    	    </div>    
+    		    <input type="text" class="form-control" id="comments" placeholder="Put some comments">
+    	    </div>   
+            <button type="submit" class="btn btn-default">Submit</button> 
 	    </form>
-	    <button type="submit" class="btn btn-default">Submit</button>
 	</div>
+</template>
+
+<template name="website_comment">
+    <li class="comment-item">
+        <span class="comment-text">{{comment}}</span>
+        <span class="comment-createdby">{{email}}</span>
+        <span class="comment-createdon">{{createdOn}}</span>
+    </li>
 </template>
 
 <!-- template that displays several website items -->

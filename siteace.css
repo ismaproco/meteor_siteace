@@ -30,7 +30,20 @@
     display: block;
 } 
 
-.detail .votes, 
-.detail .createdOn {
+.detail .detail-votes, 
+.detail .detail-createdon {
+    color: gray;
+}
+.comment-item {
+    position: relative;
+}
+
+.comment-text {
+    display:block;
+}
+
+.comment-createdby, .comment-createdon {
+    display:block;
+    font-size: small;
     color: gray;
 }

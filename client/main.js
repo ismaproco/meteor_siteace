@@ -19,41 +19,67 @@ Template.website_item.events({
     "click .js-upvote":function(event){
         // example of how you can access the id for the website in the database
         // (this is the data context for the template)
-        var website_id = this._id;
-        console.log("Up voting website with id "+website_id);
-        // put the code in here to add a vote to a website!
-        
-        var calc_votes = 0;
-        if(this.votes && !isNaN(this.votes)){
-            calc_votes = this.votes + 1;    
-        } else {
-            calc_votes = 1;
+
+        if(Meteor.user()){
+            var website_id = this._id;
+            console.log("Up voting website with id "+website_id);
+            // put the code in here to add a vote to a website!
+            
+            var calc_votes = 0;
+            if(this.votes && !isNaN(this.votes)){
+                calc_votes = this.votes + 1;    
+            } else {
+                calc_votes = 1;
+            }
+            
+            Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );    
         }
-        
-        Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
         
         return false;// prevent the button from reloading the page
     }, 
     "click .js-downvote":function(event){
 
-        // example of how you can access the id for the website in the database
-        // (this is the data context for the template)
-        var website_id = this._id;
-        console.log("Down voting website with id "+website_id);
+        if(Meteor.user()){
+            // example of how you can access the id for the website in the database
+            // (this is the data context for the template)
+            var website_id = this._id;
+            console.log("Down voting website with id "+website_id);
 
-        // put the code in here to remove a vote from a website!
-        var calc_votes = 0;
-        if(this.votes && !isNaN(this.votes)){
-            calc_votes = this.votes - 1;    
-        } else {
-            calc_votes = -1;
+            // put the code in here to remove a vote from a website!
+            var calc_votes = 0;
+            if(this.votes && !isNaN(this.votes)){
+                calc_votes = this.votes - 1;    
+            } else {
+                calc_votes = -1;
+            }
+            Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
         }
-        Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
-        
-        
         return false;// prevent the button from reloading the page
     }
 });
+
+Template.website_detail.events({"submit .js-comments-website":function(event){
+    var website_id = this._id;
+    var comment = event.target.comments.value.trim();
+    var commentsArray = this.comments || [];
+
+    if(Meteor.user() && comment){
+        
+        commentsArray.push({
+            "userId": Meteor.user()._id,
+            "email": Meteor.user().emails[0].address,
+            "createdOn":new Date(),
+            "comment":comment
+        });
+        
+        Websites.update({ _id : website_id } , { $set: { comments: commentsArray } } );
+        //clear form
+        $(event.target).trigger("reset");
+    }
+    
+    return false;
+}});
+
 
 Template.website_form.events({
     "click .js-toggle-website-form":function(event){
