@@ -2,3 +2,14 @@
 .hidden_div{
 	display:none;
 }
+
+
+.votes {
+    font-size:small;
+    color:gray;
+}
+
+.created-on {
+    font-size:small;
+    color:gray;
+}
