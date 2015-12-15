@@ -1,3 +1,4 @@
 Router.route('/', function () {
-  this.render('summary');
+    this.layout('ApplicationLayout');
+    this.render("summary",{to:'main'});
 });

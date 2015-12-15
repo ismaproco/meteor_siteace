@@ -5,9 +5,9 @@
 
 </body>
 
-<template name="application">
-    {{> yield "navbar"}}
-    <div class="container">
+<template name="ApplicationLayout">
+    {{> navbar}}
+    <div class="container-fluid">
         {{> yield "main"}}
     </div>
 </template>
