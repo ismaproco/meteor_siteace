@@ -8,5 +8,29 @@
     font-size:small;
     color:gray;
     display:block;
+}
+
+
+.website_detail span {
     
+}
+
+
+.website_detail .title {
+    display:block;
+    font-weight: bold;
+}
+
+.website_detail .url {
+    display:block;
+    font-weight: bold;
+}
+
+.website_detail .description {
+    display: block;
+} 
+
+.website_detail .votes, 
+.website_detail .createdOn {
+    color: gray;
 }

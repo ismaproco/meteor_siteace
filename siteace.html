@@ -60,16 +60,19 @@
 
 
 <template name="website_detail">
-	
 	<div class="detail">
 	    <div>
 	        <h1>Webpage Details</h1>
 	        <p>
-	            <span>{{title}}</span>
-	            <span>{{url}}</span>
-	            <span>{{description}}</span>
-	            <span>{{votes}}</span>
-	            <span>{{createdOn}}</span>
+	            <span class="title">{{title}}</span>
+	            <span class="url"><a href="{{url}}" target="blank">{{url}}</a></span>
+	            Description
+	            <span class="description">{{description}}</span>
+	            
+	            Votes: <span class="votes">{{votes}}</span>
+	            Created On: <span class="createdOn">{{createdOn}}</span>
+	            
+	            <a href="/">Back</a>
 	        </p>
 	    </div>
 	    <form class="js-comments-website">
