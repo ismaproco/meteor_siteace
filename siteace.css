@@ -62,3 +62,8 @@
     background-color: #aa5939;
     color: #ffc2aa;
 }
+
+.comments-by {
+    color: gray;
+    font-size: small;
+}
