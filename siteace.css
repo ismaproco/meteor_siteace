@@ -30,20 +30,17 @@
     display: block;
 } 
 
-.detail .detail-votes, 
-.detail .detail-createdon {
+.detail .votes, 
+.detail .createdOn {
     color: gray;
 }
-.comment-item {
-    position: relative;
-}
 
-.comment-text {
-    display:block;
-}
-
-.comment-createdby, .comment-createdon {
-    display:block;
-    font-size: small;
-    color: gray;
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
 }

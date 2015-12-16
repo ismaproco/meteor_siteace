@@ -27,8 +27,8 @@ Template.website_item.events({
             
             var calc_votes = 0;
             if(this.votes && !isNaN(this.votes)){
-                calc_votes = this.votes + 1; 
                 this.votes_plus = 1 + ( this.votes_plus ? this.votes_plus : 0 );
+                calc_votes = this.votes_plus - ( this.votes_minus ? this.votes_minus : 0 );
             } else {
                 calc_votes = 1;
                 this.votes_plus = 1;
@@ -52,14 +52,14 @@ Template.website_item.events({
             // put the code in here to remove a vote from a website!
             var calc_votes = 0;
             if(this.votes && !isNaN(this.votes)){
-                calc_votes = this.votes - 1;    
                 this.votes_minus = 1 + ( this.votes_minus ? this.votes_minus : 0 );
+                calc_votes = ( this.votes_plus ? this.votes_plus : 0 ) - this.votes_minus;
             } else {
                 calc_votes = -1;
             }
             Websites.update({ _id : website_id } , { $set: { votes:calc_votes, votes_minus: this.votes_minus } } );
         } else {
-            alert('You are not logged in!');
+            alert('You are not logged in!');    
         }
         return false;// prevent the button from reloading the page
     }

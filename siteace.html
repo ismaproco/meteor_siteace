@@ -71,9 +71,12 @@
 	            </span>
 	            <span class="description">{{description}}</span>
 	            
-	            Votes: <span class="votes">{{votes}}</span>
+	            Rank: <span class="votes">{{votes}}</span>
 	            Created On: <span class="createdOn">{{createdOn}}</span>
 	            
+	            <button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-plus"></i></button>:{{ votes_plus }}
+        	    <button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-minus"></i></button>:{{ votes_minus }}
+	    
 	            <a href="/">Back</a>
 	        </p>
 	    </div>
@@ -103,7 +106,7 @@
 	<p>
 		{{description}}
 	</p>
-	<span class="votes">Votes: {{votes}}</span>
+	<span class="votes">Rank: {{votes}}</span>
 	<span class="created-on">Created On: {{createdOn}}</span>
 	<a href="#" class="btn btn-default js-upvote">
 		<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
