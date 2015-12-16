@@ -35,6 +35,8 @@ Template.website_item.events({
             }
             
             Websites.update({ _id : website_id } , { $set: { votes:calc_votes, votes_plus: this.votes_plus } } );    
+        } else {
+            alert('You are not logged in!');
         }
         
         return false;// prevent the button from reloading the page
@@ -56,6 +58,8 @@ Template.website_item.events({
                 calc_votes = -1;
             }
             Websites.update({ _id : website_id } , { $set: { votes:calc_votes, votes_minus: this.votes_minus } } );
+        } else {
+            alert('You are not logged in!');
         }
         return false;// prevent the button from reloading the page
     }
