@@ -80,6 +80,11 @@
 	            <a href="/">Back</a>
 	        </p>
 	    </div>
+	    
+	    {{#each comments}}
+        	{{comment}}<br />
+    	{{/each}}
+	    
 	    <form class="js-comments-website">
 	        <div class="form-group">
     		    <label for="description">Comments</label>
