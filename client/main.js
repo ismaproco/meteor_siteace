@@ -27,12 +27,14 @@ Template.website_item.events({
             
             var calc_votes = 0;
             if(this.votes && !isNaN(this.votes)){
-                calc_votes = this.votes + 1;    
+                calc_votes = this.votes + 1; 
+                this.votes_plus = 1 + ( this.votes_plus ? this.votes_plus : 0 );
             } else {
                 calc_votes = 1;
+                this.votes_plus = 1;
             }
             
-            Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );    
+            Websites.update({ _id : website_id } , { $set: { votes:calc_votes, votes_plus: this.votes_plus } } );    
         }
         
         return false;// prevent the button from reloading the page
@@ -49,10 +51,11 @@ Template.website_item.events({
             var calc_votes = 0;
             if(this.votes && !isNaN(this.votes)){
                 calc_votes = this.votes - 1;    
+                this.votes_minus = 1 + ( this.votes_minus ? this.votes_minus : 0 );
             } else {
                 calc_votes = -1;
             }
-            Websites.update({ _id : website_id } , { $set: { votes:calc_votes } } );
+            Websites.update({ _id : website_id } , { $set: { votes:calc_votes, votes_minus: this.votes_minus } } );
         }
         return false;// prevent the button from reloading the page
     }
