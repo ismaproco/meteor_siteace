@@ -74,9 +74,9 @@
 	            Rank: <span class="votes">{{votes}}</span>
 	            Created On: <span class="createdOn">{{createdOn}}</span>
 	            
-	            <button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-plus"></i></button>:{{ votes_plus }}
-        	    <button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-minus"></i></button>:{{ votes_minus }}
-	    
+	            <button type="button" class="btn btn-default btn-circle btn-green"><i class="glyphicon glyphicon-plus"></i></button>:{{ votes_plus }}
+	            <button type="button" class="btn btn-default btn-circle btn-red"><i class="glyphicon glyphicon-minus"></i></button>:{{ votes_minus }}
+	            
 	            <a href="/">Back</a>
 	        </p>
 	    </div>
@@ -116,8 +116,8 @@
 	</a>
 	
 	<div>
-	    <button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-plus"></i></button>:{{ votes_plus }}
-	    <button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-minus"></i></button>:{{ votes_minus }}
+	    <button type="button" class="btn btn-default btn-circle btn-green"><i class="glyphicon glyphicon-plus"></i></button>:{{ votes_plus }}
+	    <button type="button" class="btn btn-default btn-circle btn-red"><i class="glyphicon glyphicon-minus"></i></button>:{{ votes_minus }}
 	</div>
 	
 	<a href="/w/{{_id}}">Detail</a> 
