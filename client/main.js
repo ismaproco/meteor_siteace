@@ -26,7 +26,7 @@ Template.website_item.events({
             // put the code in here to add a vote to a website!
             
             var calc_votes = 0;
-            if(this.votes && !isNaN(this.votes)){
+            if(typeof this.votes === "number" && !isNaN(this.votes)){
                 this.votes_plus = 1 + ( this.votes_plus ? this.votes_plus : 0 );
                 calc_votes = this.votes_plus - ( this.votes_minus ? this.votes_minus : 0 );
             } else {
@@ -51,7 +51,7 @@ Template.website_item.events({
 
             // put the code in here to remove a vote from a website!
             var calc_votes = 0;
-            if(this.votes && !isNaN(this.votes)){
+            if(typeof this.votes === "number" && !isNaN(this.votes)){
                 this.votes_minus = 1 + ( this.votes_minus ? this.votes_minus : 0 );
                 calc_votes = ( this.votes_plus ? this.votes_plus : 0 ) - this.votes_minus;
             } else {
